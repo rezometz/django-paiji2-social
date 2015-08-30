@@ -20,5 +20,5 @@ def display_comment_area(context, on_message, nb=5):
         'request': context['request'],
         'comments': comments,
         'on_message': on_message,
-        'form': CommentForm(),
+        'form': CommentForm(auto_id=False),
     }
