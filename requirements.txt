@@ -1,0 +1,4 @@
+git+https://github.com/rezometz/django-paiji2-utils
+git+https://github.com/rezometz/django-modular-blocks
+git+https://github.com/rezometz/django-backbone-calendar
+git+https://github.com/peterbe/django-html-validator

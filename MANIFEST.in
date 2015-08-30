@@ -1,0 +1,8 @@
+include README.markdown
+include LICENSE
+include COPYING
+recursive-include paiji2_social/static *
+recursive-include paiji2_social/templates *
+recursive-include paiji2_social/templatetags *
+recursive-include paiji2_social/locale *
+recursive-include paiji2_social/migrations *
