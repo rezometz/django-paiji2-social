@@ -132,6 +132,7 @@ class CommentCreateView(generic.CreateView):
 
 class GroupView(generic.DetailView):
     model = Group
+    template_name = 'social/group_detail.html'
 
 
 # TODO; factorize group retrieving
