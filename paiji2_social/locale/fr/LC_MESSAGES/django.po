@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 19:30+0200\n"
+"POT-Creation-Date: 2015-08-30 18:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -178,11 +178,11 @@ msgstr "commentaire"
 msgid "comments"
 msgstr "commentaires"
 
-#: templates/social/comment_area.html:11
+#: templates/social/comment_area.html:14
 msgid "About"
 msgstr "À propos de"
 
-#: templates/social/comment_area.html:23
+#: templates/social/comment_area.html:24
 #, python-format
 msgid "%(TimeSince)s ago"
 msgstr "il y a %(TimeSince)s"
@@ -191,7 +191,8 @@ msgstr "il y a %(TimeSince)s"
 msgid "Calendar"
 msgstr "Calendrier"
 
-#: templates/social/group_base.html:16 templates/social/news_list.html:5
+#: templates/social/group_base.html:16 templates/social/news-feed.html:9
+#: templates/social/news_list.html:5
 msgid "News"
 msgstr "Nouvelles"
 
@@ -272,22 +273,38 @@ msgstr ""
 "club/liste), vous pouvez contacter le Rézo ou le Bureau de votre groupe pour "
 "vous enregistrer."
 
-#: views.py:50
+#: templates/social/news-feed.html:66
+msgid "public"
+msgstr "public"
+
+#: templates/social/news-feed.html:68
+msgid "internal"
+msgstr "interne"
+
+#: templates/social/news-feed.html:74
+msgid "for"
+msgstr "pour"
+
+#: templates/social/news-feed.html:74
+msgid " %(TimeSince)s ago"
+msgstr " il y a %(TimeSince)s"
+
+#: views.py:51
 msgid "Your request has been saved successfully :P"
 msgstr "Votre demande a bien été enregistrée :P"
 
-#: views.py:62
+#: views.py:63
 msgid "Rezo is not hacked. You don't have the permission xD"
 msgstr "Le Rézo n’est pas piraté. Tu n’as pas le droit xD"
 
-#: views.py:73
+#: views.py:75
 msgid "Your Message has been updated, it will be refreshed in a moment"
 msgstr "Votre message a été mis à jour, ce sera pris en compte bientôt"
 
-#: views.py:96
+#: views.py:99
 msgid "Your Message has been removed, it will be refreshed in a moment"
 msgstr "Votre message a été supprimé, ce sera pris en compte bientôt"
 
-#: views.py:125
+#: views.py:128
 msgid "Your comment has been successfully saved."
 msgstr "Votre commentaire a bien été enregistré"
