@@ -22,17 +22,17 @@ urlpatterns = [
     ),
     # Message
     url(
-        r'add$',
+        r'^add$',
         login_required(MessageCreateView.as_view()),
         name="newsfeed-add",
     ),
     url(
-        r'edit/(?P<pk>[0-9]+)/$',
+        r'^edit/(?P<pk>[0-9]+)/$',
         login_required(MessageEditView.as_view()),
         name="newsfeed-edit",
     ),
     url(
-        r'delete/(?P<pk>[0-9]+)/$',
+        r'^delete/(?P<pk>[0-9]+)/$',
         login_required(MessageDeleteView.as_view()),
         name="newsfeed-delete",
     ),
@@ -44,20 +44,20 @@ urlpatterns = [
 
     # Group
     url(
-        r'(?P<slug>[\w-]+)/dashboard$',
+        r'^(?P<slug>[\w-]+)/dashboard$',
         login_required(GroupView.as_view()),
         name="workgroup-view",
     ),
     # Group Members
     url(
-        r'(?P<slug>[\w-]+)/members$',
+        r'^(?P<slug>[\w-]+)/members$',
         login_required(GroupMembersView.as_view()),
         name="workgroup-members",
     ),
 
     # Group News
     url(
-        r'(?P<slug>[\w-]+)/news$',
+        r'^(?P<slug>[\w-]+)/news$',
         login_required(GroupNewsView.as_view()),
         name="workgroup-news",
     ),
