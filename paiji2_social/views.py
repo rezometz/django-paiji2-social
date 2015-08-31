@@ -7,16 +7,14 @@ from django.contrib import messages
 from django.http import HttpResponseNotFound
 from django.contrib.auth import get_user_model
 
-from tinymce.widgets import TinyMCE
-
 from .models import Message, Comment, Group
-from .forms import CommentForm
+from .forms import CommentForm, MessageForm
 # from django.conf import settings
 
 
 class MessageListView(generic.ListView):
     model = Message
-    paginate_by = 8
+    paginate_by = 5
     context_object_name = 'news'
     template_name = 'social/index.html'
 
@@ -28,18 +26,23 @@ class MessageListView(generic.ListView):
         return qs.order_by('-pubDate').select_related('author')
 
 
-class MessageCreateView(generic.CreateView):
-    model = Message
-    fields = ('group', 'title', 'content', 'public')
-    template_name = 'social/message_form.html'
+class MessageFormMixin(object):
 
-    def get_form(self, form_class):
-        form = super(MessageCreateView, self).get_form(form_class)
-        form.fields['group'].queryset = Group.objects.filter(
-            bureaus__members__utilisateur=self.request.user
-        )
-        form.fields['content'].widget = TinyMCE(attrs={'cols': 80, 'rows': 20})
-        return form
+    form_class = MessageForm
+
+    def get_form_kwargs(self):
+        kwargs = super(MessageFormMixin, self).get_form_kwargs()
+        kwargs.update({
+            'groups': Group.objects.filter(
+                bureaus__members__utilisateur=self.request.user,
+                )
+        })
+        return kwargs
+
+
+class MessageCreateView(MessageFormMixin, generic.CreateView):
+    model = Message
+    template_name = 'social/message_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -50,8 +53,7 @@ class MessageCreateView(generic.CreateView):
             self.request,
             _('Your request has been saved successfully :P'),
         )
-        success_url = self.request.POST.get('next')
-        return success_url if success_url != '' else reverse('index')
+        return reverse('index')
 
 
 class OwnershipMessageCheck(object):
@@ -67,29 +69,23 @@ class OwnershipMessageCheck(object):
         )
 
 
-class MessageEditView(OwnershipMessageCheck, generic.UpdateView):
+class MessageEditView(
+                     OwnershipMessageCheck,
+                     MessageFormMixin,
+                     generic.UpdateView
+                    ):
     model = Message
-    fields = ('group', 'title', 'content', 'public')
     template_name = 'social/message_form.html'
     message_update = _(
         'Your Message has been updated, it will be refreshed in a moment'
     )
-
-    def get_form(self, form_class):
-        form = super(MessageEditView, self).get_form(form_class)
-        form.fields['group'].queryset = Group.objects.filter(
-            bureaus__members__utilisateur=self.request.user
-        )
-        form.fields['content'].widget = TinyMCE(attrs={'cols': 80, 'rows': 20})
-        return form
 
     def get_success_url(self):
         messages.success(
             self.request,
             self.message_update,
         )
-        success_url = self.request.POST.get('next')
-        return success_url if success_url != '' else reverse('index')
+        return reverse('index')
 
 
 class MessageDeleteView(OwnershipMessageCheck, generic.DeleteView):
@@ -128,7 +124,8 @@ class CommentCreateView(generic.CreateView):
             self.request,
             _("Your comment has been successfully saved."),
         )
-        return reverse('index')
+        success_url = self.request.POST.get('next')
+        return success_url if success_url != '' else reverse('index')
 
 
 class GroupView(generic.DetailView):
