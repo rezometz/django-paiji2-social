@@ -41,6 +41,7 @@
                 {% buttons %}
                     <input style="display:none; position: absolute; left: -9999px; width: 1px; height: 1px;" type="submit" value="Sent" class="btn btn-success" />
                 {% endbuttons %}
+                <input type="hidden" value="{{ request.get_full_path }}" name="next" />
                 <div class="clearfix"></div>
             </form>
         </li>
