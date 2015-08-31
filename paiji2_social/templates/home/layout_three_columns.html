@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        {% block style %}{% endblock %}
+    </head>
+
+    <body>
+        <div id="main" class="container clearfix">
+            <div class="row">
+                <div class="col-md-6">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+        <div id="master">
+            <div class="row">
+                <div class="col-md-6">
+                    {% block master %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

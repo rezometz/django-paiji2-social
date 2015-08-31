@@ -1,6 +1,9 @@
+# -*- encoding: utf-8 -*-
 import django.conf.global_settings as DEFAULT_SETTINGS
 import os
 
+
+DEBUG = True
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -35,7 +38,7 @@ INSTALLED_APPS = (
     'paiji2_social',
 )
 
-ROOT_URLCONF = 'paiji2_social.urls'
+ROOT_URLCONF = 'testurls'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,3 +62,6 @@ HTMLVALIDATOR_VNU_URL = 'https://validator.nu/'
 HTMLVALIDATOR_DUMPDIR = os.path.join(BASE_DIR, 'validation_errors')
 
 HTMLVALIDATOR_OUTPUT = 'file'  # default is 'file'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

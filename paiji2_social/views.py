@@ -18,7 +18,7 @@ class MessageListView(generic.ListView):
     model = Message
     paginate_by = 8
     context_object_name = 'news'
-    template_name = 'home/index.html'
+    template_name = 'social/index.html'
 
     def get_queryset(self):
         qs = super(MessageListView, self).get_queryset()
@@ -111,6 +111,7 @@ class MessageDeleteView(OwnershipMessageCheck, generic.DeleteView):
 class CommentCreateView(generic.CreateView):
     model = Comment
     form_class = CommentForm
+    http_method_names = ['post']
 
     def form_valid(self, form):
         # TODO: it should check that the message exists before

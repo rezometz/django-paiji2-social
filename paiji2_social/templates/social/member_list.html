@@ -16,17 +16,19 @@
         {% for bureau in group.bureaus.all %}
         {% with bureau.members.all as members %}
         {% if members|length > 0 %}
-        <tr>
-            <th colspan="3">{{ bureau.createdDate.year }}</th>
-        </tr>
-            {% for member in members %}
-        <tr>
-            <td>
-                {% profile_link member.utilisateur %}
-                <small class="text-muted">{{ member.postType }}</small>
-            </td>
-        </tr>
-            {% endfor %}
+            <tr>
+                <th colspan="2">{{ bureau.createdDate.year }}</th>
+            </tr>
+                {% for member in members %}
+            <tr>
+                <td>
+                    {% profile_link member.utilisateur %}
+                </td>
+                <td>
+                    <small class="text-muted">{{ member.postType }}</small>
+                </td>
+            </tr>
+                {% endfor %}
         {% endif %}
         {% endwith %}
         {% endfor %}

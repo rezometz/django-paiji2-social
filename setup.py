@@ -17,7 +17,7 @@ os.chdir(curdir)
 
 setup(
     name='django-paiji2-social',
-    version='0.1',
+    version='0.2',
     packages=['paiji2_social'],
     include_package_data=True,
     description='A social app (news, groups, etc.)',
