@@ -133,8 +133,19 @@ class GroupView(generic.DetailView):
     template_name = 'social/group_detail.html'
 
 
-# TODO; factorize group retrieving
-class GroupNewsView(generic.ListView):
+class GroupMixin(object):
+
+    def dispatch(self, *args, **kwargs):
+        self.group = get_object_or_404(Group, slug=kwargs['slug'])
+        return super(GroupMixin, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self):
+        cd = super(GroupMixin, self).get_context_data()
+        cd['group'] = self.group
+        return cd
+
+
+class GroupNewsView(GroupMixin, generic.ListView):
     model = Message
     template_name = 'social/news_list.html'
     context_object_name = 'news'
@@ -150,31 +161,13 @@ class GroupNewsView(generic.ListView):
         )
         return qs
 
-    def dispatch(self, *args, **kwargs):
-        self.group = get_object_or_404(Group, slug=kwargs['slug'])
-        return super(GroupNewsView, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self):
-        cd = super(GroupNewsView, self).get_context_data()
-        cd['group'] = self.group
-        return cd
-
-
-class GroupMembersView(generic.ListView):
+class GroupMembersView(GroupMixin, generic.ListView):
     model = get_user_model()
     template_name = 'social/member_list.html'
     context_object_name = 'members'
-
-    def dispatch(self, *args, **kwargs):
-        self.group = get_object_or_404(Group, slug=kwargs['slug'])
-        return super(GroupMembersView, self).dispatch(*args, **kwargs)
 
     def get_queryset(self):
         qs = super(GroupMembersView, self).get_queryset()
         qs = qs.filter(posts__bureau__group=self.group)
         return qs
-
-    def get_context_data(self):
-        cd = super(GroupMembersView, self).get_context_data()
-        cd['group'] = self.group
-        return cd
