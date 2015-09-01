@@ -37,7 +37,7 @@ setup(
     ],
     install_requires=[
         'Pillow>=2.4.0',
-        'django-tinymce>=1.5.2',
+        'django-tinymce==1.5.2',
         'django-bootstrap3>=6',
         'django-modular-blocks',
         'django-paiji2-utils>=0.1',
