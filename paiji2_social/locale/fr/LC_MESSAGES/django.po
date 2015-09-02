@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-30 18:38+0200\n"
+"POT-Creation-Date: 2015-09-02 11:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "Dernières nouvelles"
 msgid "Latest entries from all the workgroups"
 msgstr "Dernières nouvelle de tous les groupes"
 
-#: forms.py:11
+#: forms.py:12
 msgid "Write a comment..."
 msgstr "Écrire un commentaire"
 
@@ -44,7 +44,7 @@ msgstr "types de poste"
 
 #: models.py:36 models.py:51
 msgid "name"
-msgstr "nome"
+msgstr "nom"
 
 #: models.py:45
 msgid "group category"
@@ -216,6 +216,10 @@ msgstr "Tableau de bord"
 msgid "Download iCalendar file (.ics)"
 msgstr "Télécharger le fichier iCalendar (.ics)"
 
+#: templates/social/index.html:4
+msgid "Home"
+msgstr "Accueil"
+
 #: templates/social/message_confirm_delete.html:5
 msgid "Confirm deleting a piece of news"
 msgstr "Confirmation de suppression d’une nouvelle"
@@ -286,25 +290,26 @@ msgid "for"
 msgstr "pour"
 
 #: templates/social/news-feed.html:74
+#, python-format
 msgid " %(TimeSince)s ago"
 msgstr " il y a %(TimeSince)s"
 
-#: views.py:51
+#: views.py:54
 msgid "Your request has been saved successfully :P"
 msgstr "Votre demande a bien été enregistrée :P"
 
-#: views.py:63
+#: views.py:65
 msgid "Rezo is not hacked. You don't have the permission xD"
 msgstr "Le Rézo n’est pas piraté. Tu n’as pas le droit xD"
 
-#: views.py:75
+#: views.py:80
 msgid "Your Message has been updated, it will be refreshed in a moment"
 msgstr "Votre message a été mis à jour, ce sera pris en compte bientôt"
 
-#: views.py:99
+#: views.py:95
 msgid "Your Message has been removed, it will be refreshed in a moment"
 msgstr "Votre message a été supprimé, ce sera pris en compte bientôt"
 
-#: views.py:128
+#: views.py:125
 msgid "Your comment has been successfully saved."
 msgstr "Votre commentaire a bien été enregistré"
