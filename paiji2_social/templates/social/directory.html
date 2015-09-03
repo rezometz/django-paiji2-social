@@ -5,6 +5,15 @@
 {% load profile %}
 {% load gravatar %}
 
+{% block title %}
+
+{% trans 'Directory' %}
+{% if q %}
+	| {{ q }}
+{% endif %}
+
+{% endblock %}
+
 {% block content %}
 
 <div class="row">
