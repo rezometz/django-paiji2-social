@@ -8,13 +8,13 @@
 {% block content %}
 
 <div class="row">
-    <div class="col col-sx-12">
+    <div class="col col-md-12">
         <h2>{% trans 'Directory' %}</h2>
 	</div>
 </div>
 
 <div class="row">
-    <div class="col col-sx-12 centered">
+    <div class="col col-md-12 centered">
         <form role="search" method="GET"
         name="search" action="{{ request.path }}" >
             <div class="input-group">
@@ -31,14 +31,14 @@
 
 {% if is_paginated %}
 <div class="row">
-    <div class="col col-sx-12 centered pagination-container">
+    <div class="col col-md-12 centered pagination-container">
         {% bootstrap_pagination page_obj %}
 	</div>
 </div>
 {% endif %}
 
 <div class="row">
-<div class="col col-sx-12">
+<div class="col col-md-12">
 <table class="table table-striped">
     <thead>
         <tr>
@@ -48,8 +48,7 @@
             <th>{% trans 'Pseudo' %}</th>
             <th>{% trans 'Email' %}</th>
             <th>{% trans 'School' %}</th>
-            <th>{% trans 'Class' %}</th>
-            <th>{% trans 'Room' %}</th>
+            {# <th>{% trans 'Room' %}</th> #}
         </tr>
     </thead>
     <tbody>
@@ -71,24 +70,22 @@
                 <a href="mailto:{{ user.email|urlencode }}"
                 title="{{ _('Send a mail to')|add:' '|add:user.first_name|add:' '|add:user.last_name }}"
                 >
-                    {{ '<'|add:user.email|add:'>' }}
+                    {{ user.email }}
                 </a>
             </td>
             {% if user.get_rezo %}
-                <td>{{ user.get_rezo.ecole }}</td>
-                <td>{{ user.get_rezo.precisionecole }}</td>
-                <td>{{ user.get_room }}</td>
+                <td>
+									{{ user.get_rezo.ecole }}
+									{{ user.get_rezo.precisionecole }}
+								</td>
+                {# <td>{{ user.get_room }}</td> #}
             {% else %}
-                <td></td>
-                <td></td>
                 <td></td>
             {% endif %}
         </tr>
 		{% empty %}
 		<tr class="inactive">
 			<td><span class="label label-defaul label-danger">{% trans 'no result' %}</span></td>
-			<td></td>
-			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>
@@ -103,7 +100,7 @@
 
 {% if is_paginated %}
 <div class="row">
-    <div class="col col-sx-12 centered pagination-container">
+    <div class="col col-md-12 centered pagination-container">
         {% bootstrap_pagination page_obj %}
 	</div>
 </div>
