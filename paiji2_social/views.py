@@ -183,6 +183,13 @@ class DirectoryView(generic.ListView):
 
     def get_queryset(self):
         if 'search' in self.request.GET:
-            return super(DirectoryView, self).get_queryset()
+            word = self.request.GET['search']
+            qs = self.model.objects.filter(
+                Q(first_name__icontains=word) |
+                Q(last_name__icontains=word) |
+                Q(username__icontains=word) |
+                Q(email__icontains=word)
+            )
+            return qs
         else:
             return super(DirectoryView, self).get_queryset()
