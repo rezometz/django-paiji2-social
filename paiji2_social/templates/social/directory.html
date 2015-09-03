@@ -74,10 +74,10 @@
                     {{ '<'|add:user.email|add:'>' }}
                 </a>
             </td>
-            {% if profile.get_rezo %}
-                <td>{{ profile.get_rezo.ecole }}</td>
-                <td>{{ profile.get_rezo.precisionecole }}</td>
-                <td>{{ profile.get_room }}</td>
+            {% if user.get_rezo %}
+                <td>{{ user.get_rezo.ecole }}</td>
+                <td>{{ user.get_rezo.precisionecole }}</td>
+                <td>{{ user.get_room }}</td>
             {% else %}
                 <td></td>
                 <td></td>
