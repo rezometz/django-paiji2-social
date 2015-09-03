@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'backbone_calendar',
     'paiji2_utils',
+    'django_gravatar',
 
     # We test this one
     'paiji2_social',

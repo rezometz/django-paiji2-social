@@ -144,6 +144,12 @@ class PagesTestCase(BaseTestCase):
         response = self.client.get(reverse('newsfeed-add'))
         self.assertEqual(response.status_code, 302)
 
+        response = self.client.get(reverse('directory'))
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(reverse('directory') + '?q=gont')
+        self.assertEqual(response.status_code, 302)
+
         response = self.client.get(reverse(
             'newsfeed-edit',
             args=[self.first_message.pk],
@@ -188,6 +194,12 @@ class PagesTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get(reverse('newsfeed-add'))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.get(reverse('directory'))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.get(reverse('directory') + '?q=gont')
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get(reverse(

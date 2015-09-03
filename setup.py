@@ -41,5 +41,6 @@ setup(
         'django-bootstrap3>=6',
         'django-modular-blocks',
         'django-paiji2-utils>=0.1',
+        'django-gravatar2>=1.3',
     ]
 )
