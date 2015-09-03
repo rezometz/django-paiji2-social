@@ -10,6 +10,7 @@ from .views import (
     GroupView,
     GroupMembersView,
     GroupNewsView,
+    DirectoryView,
 )
 from .feeds import LatestEntriesFeed
 
@@ -40,6 +41,13 @@ urlpatterns = [
         r'^comment/(?P<on_message>[0-9]+)/$',
         login_required(CommentCreateView.as_view()),
         name="comment-add"
+    ),
+
+    # Directory
+    url(
+        r'^directory/$',
+        login_required(DirectoryView.as_view()),
+        name='directory',
     ),
 
     # Group

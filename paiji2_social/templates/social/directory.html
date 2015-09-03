@@ -1,0 +1,83 @@
+{% extends "home/layout_three_columns.html" %}
+
+{% load bootstrap3 %}
+{% load i18n %}
+{% load profile %}
+{% load gravatar %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col col-sx-12">
+        <h2>{% trans 'Directory' %}</h2>
+	</div>
+</div>
+
+<div class="row">
+    <div class="col col-sx-12 centered pagination-container">
+        {% bootstrap_pagination page_obj %}
+	</div>
+</div>
+
+<div class="row">
+<div class="col col-sx-12">
+<table class="table">
+    <thead>
+        <tr>
+            <th>{% trans 'Profile' %}</th>
+            <th>{% trans 'Last name' %}</th>
+            <th>{% trans 'First name' %}</th>
+            <th>{% trans 'Pseudo' %}</th>
+            <th>{% trans 'Email' %}</th>
+            <th>{% trans 'School' %}</th>
+            <th>{% trans 'Class' %}</th>
+            <th>{% trans 'Room' %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>
+                <a class="logo"
+                title="{% trans 'view profile' %}"
+                href="{% profile_url user %}"
+                alt="{% trans 'profile' %}"
+                >
+                    {% gravatar user.email 30 %}
+                </a>
+            </td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>
+                {{ user.username }}
+            </td>
+            <td>
+                <a href="mailto:{{ user.email|urlencode }}"
+                title="{{ _('Send a mail to')|add:' '|add:user.first_name|add:' '|add:user.last_name }}"
+                >
+                    {{ '<'|add:user.email|add:'>' }}
+                </a>
+            </td>
+            {% if profile.get_rezo %}
+                <td>{{ profile.get_rezo.ecole }}</td>
+                <td>{{ profile.get_rezo.precisionecole }}</td>
+                <td>{{ profile.get_room }}</td>
+            {% else %}
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+<div class="row">
+    <div class="col col-sx-12 centered pagination-container">
+        {% bootstrap_pagination page_obj %}
+	</div>
+</div>
+
+{% endblock %}

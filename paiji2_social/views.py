@@ -6,6 +6,7 @@ from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.http import HttpResponseNotFound
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 
 from .models import Message, Comment, Group
 from .forms import CommentForm, MessageForm
@@ -171,3 +172,17 @@ class GroupMembersView(GroupMixin, generic.ListView):
         qs = super(GroupMembersView, self).get_queryset()
         qs = qs.filter(posts__bureau__group=self.group)
         return qs
+
+
+class DirectoryView(generic.ListView):
+    model = get_user_model()
+    context_object_name = 'users'
+    ordering = ['last_name', 'first_name', 'username']
+    template_name = 'social/directory.html'
+    paginate_by = 30
+
+    def get_queryset(self):
+        if 'search' in self.request.GET:
+            return super(DirectoryView, self).get_queryset()
+        else:
+            return super(DirectoryView, self).get_queryset()
