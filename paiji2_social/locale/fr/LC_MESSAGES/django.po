@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-03 22:28+0200\n"
+"POT-Creation-Date: 2015-09-03 23:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -195,49 +195,41 @@ msgstr "Répertoire"
 msgid "search"
 msgstr "rechercher"
 
-#: templates/social/directory.html:48
+#: templates/social/directory.html:45
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/social/directory.html:49
+#: templates/social/directory.html:46
 msgid "Last name"
 msgstr "Nom de famille"
 
-#: templates/social/directory.html:50
+#: templates/social/directory.html:47
 msgid "First name"
 msgstr "Prénom"
 
-#: templates/social/directory.html:51
+#: templates/social/directory.html:48
 msgid "Pseudo"
 msgstr "Pseudo"
 
-#: templates/social/directory.html:52
+#: templates/social/directory.html:49
 msgid "Email"
 msgstr "Courriel"
 
-#: templates/social/directory.html:53
+#: templates/social/directory.html:50
 msgid "School"
 msgstr "École"
 
-#: templates/social/directory.html:54
-msgid "Class"
-msgstr "Classe"
-
-#: templates/social/directory.html:55
-msgid "Room"
-msgstr "Chambre"
-
-#: templates/social/directory.html:63
+#: templates/social/directory.html:59
 msgid "view profile"
 msgstr "consulter le profil"
 
-#: templates/social/directory.html:65
-msgid "profile"
-msgstr "profil"
-
-#: templates/social/directory.html:77
+#: templates/social/directory.html:71
 msgid "Send a mail to"
 msgstr "Envoyer un courriel à"
+
+#: templates/social/directory.html:88
+msgid "no result"
+msgstr "aucun résultat"
 
 #: templates/social/group_base.html:13
 msgid "Calendar"
@@ -365,3 +357,12 @@ msgstr "Votre message a été supprimé, ce sera pris en compte bientôt"
 #: views.py:126
 msgid "Your comment has been successfully saved."
 msgstr "Votre commentaire a bien été enregistré"
+
+#~ msgid "Class"
+#~ msgstr "Classe"
+
+#~ msgid "Room"
+#~ msgstr "Chambre"
+
+#~ msgid "profile"
+#~ msgstr "profil"
