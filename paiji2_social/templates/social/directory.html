@@ -22,10 +22,7 @@
                     <i class="glyphicon glyphicon-search"></i>
                     {% trans 'search' %}
                 </span>
-                <input class="form-control" name="q"
-                         method="get" title="search"
-                        type="text" value="{{ q }}"
-                ></input>
+                <input class="form-control" name="q" title="search" type="text" value="{{ q }}"/>
             </div>
         </form>
         <br/>
@@ -42,7 +39,7 @@
 
 <div class="row">
 <div class="col col-sx-12">
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>{% trans 'Profile' %}</th>
@@ -61,9 +58,7 @@
             <td>
                 <a class="logo"
                 title="{% trans 'view profile' %}"
-                href="{% profile_url user %}"
-                alt="{% trans 'profile' %}"
-                >
+                href="{% profile_url user %}" >
                     {% gravatar user.email 30 %}
                 </a>
             </td>
@@ -89,6 +84,17 @@
                 <td></td>
             {% endif %}
         </tr>
+		{% empty %}
+		<tr class="inactive">
+			<td><span class="label label-defaul label-danger">{% trans 'no result' %}</span></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
     {% endfor %}
     </tbody>
 </table>
