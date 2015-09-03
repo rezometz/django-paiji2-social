@@ -182,8 +182,9 @@ class DirectoryView(generic.ListView):
     paginate_by = 30
 
     def get_queryset(self):
-        if 'search' in self.request.GET:
-            word = self.request.GET['search']
+        if 'q' in self.request.GET:
+            word = self.request.GET['q']
+            print word
             qs = self.model.objects.filter(
                 Q(first_name__icontains=word) |
                 Q(last_name__icontains=word) |
@@ -193,3 +194,9 @@ class DirectoryView(generic.ListView):
             return qs
         else:
             return super(DirectoryView, self).get_queryset()
+
+    def get_context_data(self, **kwargs):
+        context = super(DirectoryView, self).get_context_data(**kwargs)
+        q = self.request.GET.get('q', '')
+        context.update({'q': q})
+        return context

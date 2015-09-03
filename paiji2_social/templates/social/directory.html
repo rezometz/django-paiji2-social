@@ -14,10 +14,31 @@
 </div>
 
 <div class="row">
+    <div class="col col-sx-12 centered">
+        <form role="search" method="GET"
+        name="search" action="{{ request.path }}" >
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                    {% trans 'search' %}
+                </span>
+                <input class="form-control" name="q"
+                         method="get" title="search"
+                        type="text" value="{{ q }}"
+                ></input>
+            </div>
+        </form>
+        <br/>
+	</div>
+</div>
+
+{% if is_paginated %}
+<div class="row">
     <div class="col col-sx-12 centered pagination-container">
         {% bootstrap_pagination page_obj %}
 	</div>
 </div>
+{% endif %}
 
 <div class="row">
 <div class="col col-sx-12">
@@ -74,10 +95,12 @@
 </div>
 </div>
 
+{% if is_paginated %}
 <div class="row">
     <div class="col col-sx-12 centered pagination-container">
         {% bootstrap_pagination page_obj %}
 	</div>
 </div>
+{% endif %}
 
 {% endblock %}
