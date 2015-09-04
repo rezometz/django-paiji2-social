@@ -7,20 +7,25 @@
 
 {% block title %}
 
-{% trans 'Directory' %}
+{% trans 'User Directory' %}
 {% if q %}
 	| {{ q }}
 {% endif %}
 
 {% endblock %}
 
-{% block content %}
+{% block usersbtnclass %}
+active
+{% endblock %}
+
+{% block form %}
 
 <div class="row">
     <div class="col col-md-12">
-        <h2>{% trans 'Directory' %}</h2>
+        <h2>{% trans 'User Directory' %}</h2>
 	</div>
 </div>
+
 
 <div class="row">
     <div class="col col-md-12 centered">
@@ -38,6 +43,10 @@
 	</div>
 </div>
 
+{% endblock %}
+
+{% block results %}
+
 {% if is_paginated %}
 <div class="row">
     <div class="col col-md-12 centered pagination-container">
@@ -52,13 +61,13 @@
     <thead>
         <tr>
             <th>{% trans 'Profile' %}</th>
-            <th>{% trans 'Last name' %}</th>
             <th>{% trans 'First name' %}</th>
+            <th>{% trans 'Last name' %}</th>
             <th>{% trans 'Pseudo' %}</th>
-            <th>{% trans 'Email' %}</th>
             <th>{% trans 'School' %}</th>
             <th>{% trans 'Class' %}</th>
             <th>{% trans 'Room' %}</th>
+            <th>{% trans 'Email' %}</th>
         </tr>
     </thead>
     <tbody>
@@ -71,19 +80,16 @@
                     {% gravatar user.email 30 %}
                 </a>
             </td>
-            <td>{{ user.last_name }}</td>
-            <td>{{ user.first_name }}</td>
+            <td><strong>{{ user.first_name }}</strong></td>
+            <td>
+								<p class="text-uppercase">
+									{{ user.last_name }}
+								</p>
+						</td>
             <td>
                 <a title="{% trans 'view profile' %}"
                 href="{% profile_url user %}" >
 									{{ user.username }}
-                </a>
-            </td>
-            <td>
-                <a href="mailto:{{ user.email|urlencode }}"
-                title="{{ _('Send a mail to')|add:' '|add:user.first_name|add:' '|add:user.last_name }}"
-                >
-                    {{ user.email }}
                 </a>
             </td>
             {% if user.get_rezo %}
@@ -95,6 +101,13 @@
                 <td></td>
                 <td></td>
             {% endif %}
+            <td>
+                <a href="mailto:{{ user.email|urlencode }}"
+                title="{{ _('Send a mail to')|add:' '|add:user.first_name|add:' '|add:user.last_name }}"
+                >
+                    {{ user.email }}
+                </a>
+            </td>
         </tr>
 		{% empty %}
 		<tr class="inactive">

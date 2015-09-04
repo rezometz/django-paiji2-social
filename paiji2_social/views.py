@@ -179,7 +179,7 @@ class UserDirectoryView(generic.ListView):
     context_object_name = 'users'
     ordering = ['last_name', 'first_name', 'username']
     template_name = 'social/directory.html'
-    paginate_by = 30
+    paginate_by = 20
 
     def get_queryset(self):
         if 'q' in self.request.GET:

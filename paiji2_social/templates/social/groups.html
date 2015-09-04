@@ -9,13 +9,19 @@
 {% trans 'Groups' %}
 {% endblock %}
 
-{% block content %}
+{% block form %}
 
 <div class="row">
     <div class="col col-md-12">
-        <h2>{% trans 'Groups' %}</h2>
+        <h2>{% trans 'Group Directory' %}</h2>
 	</div>
 </div>
+
+{% endblock %}
+
+{% block groupsbtnclass %}
+active 
+{% endblock %}
 
 {% comment %}
 <div class="row">
@@ -34,6 +40,8 @@
 	</div>
 </div>
 {% endcomment %}
+
+{% block results %}
 
 {% if is_paginated %}
 <div class="row">

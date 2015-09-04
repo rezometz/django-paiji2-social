@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-04 13:30+0200\n"
+"POT-Creation-Date: 2015-09-04 18:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgstr "date de création"
 msgid "deletion date"
 msgstr "date de suppression"
 
-#: models.py:79 templates/social/groups.html:64
+#: models.py:79 templates/social/groups.html:72
 msgid "logo"
 msgstr "logo"
 
@@ -187,64 +187,63 @@ msgstr "À propos de"
 msgid "%(TimeSince)s ago"
 msgstr "il y a %(TimeSince)s"
 
-#: templates/social/directory.html:10 templates/social/directory.html.py:21
-msgid "Directory"
-msgstr "Répertoire"
+#: templates/social/directory.html:10 templates/social/directory.html.py:25
+msgid "User Directory"
+msgstr "Répertoire des Utilisateurs"
 
-#: templates/social/directory.html:32
+#: templates/social/directory.html:37
 msgid "search"
 msgstr "rechercher"
 
-#: templates/social/directory.html:54
+#: templates/social/directory.html:63
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/social/directory.html:55
-msgid "Last name"
-msgstr "Nom de famille"
-
-#: templates/social/directory.html:56
+#: templates/social/directory.html:64
 msgid "First name"
 msgstr "Prénom"
 
-#: templates/social/directory.html:57
+#: templates/social/directory.html:65
+msgid "Last name"
+msgstr "Nom de famille"
+
+#: templates/social/directory.html:66
 msgid "Pseudo"
 msgstr "Pseudo"
 
-#: templates/social/directory.html:58
-msgid "Email"
-msgstr "Courriel"
-
-#: templates/social/directory.html:59
+#: templates/social/directory.html:67
 msgid "School"
 msgstr "École"
 
-#: templates/social/directory.html:60
+#: templates/social/directory.html:68
 msgid "Class"
 msgstr "Classe"
 
-#: templates/social/directory.html:61
+#: templates/social/directory.html:69
 msgid "Room"
 msgstr "Chambre"
 
-#: templates/social/directory.html:69 templates/social/directory.html.py:77
+#: templates/social/directory.html:70
+msgid "Email"
+msgstr "Courriel"
+
+#: templates/social/directory.html:78 templates/social/directory.html.py:90
 msgid "view profile"
 msgstr "consulter le profil"
 
-#: templates/social/directory.html:84
+#: templates/social/directory.html:106
 msgid "Send a mail to"
 msgstr "Envoyer un courriel à"
 
-#: templates/social/directory.html:101 templates/social/groups.html:81
+#: templates/social/directory.html:114 templates/social/groups.html:89
 msgid "no result"
 msgstr "aucun résultat"
 
-#: templates/social/directory_base.html:20
+#: templates/social/directory_base.html:19
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: templates/social/directory_base.html:26 templates/social/groups.html:9
-#: templates/social/groups.html.py:16
+#: templates/social/directory_base.html:25 templates/social/groups.html:9
 msgid "Groups"
 msgstr "Groupes"
 
@@ -277,23 +276,27 @@ msgstr "Tableau de bord"
 msgid "Download iCalendar file (.ics)"
 msgstr "Télécharger le fichier iCalendar (.ics)"
 
-#: templates/social/groups.html:51 templates/social/message_form.html:36
+#: templates/social/groups.html:16
+msgid "Group Directory"
+msgstr "Répertoire des Groupes"
+
+#: templates/social/groups.html:59 templates/social/message_form.html:36
 msgid "Group"
 msgstr "Groupe"
 
-#: templates/social/groups.html:52
+#: templates/social/groups.html:60
 msgid "Name"
 msgstr "Nom"
 
-#: templates/social/groups.html:53
+#: templates/social/groups.html:61
 msgid "Category"
 msgstr "Catégorie"
 
-#: templates/social/groups.html:54
+#: templates/social/groups.html:62
 msgid "Creation date"
 msgstr "Date de création"
 
-#: templates/social/groups.html:62 templates/social/groups.html.py:69
+#: templates/social/groups.html:70 templates/social/groups.html.py:77
 msgid "view group detail"
 msgstr "consulter en détail ce groupe"
 

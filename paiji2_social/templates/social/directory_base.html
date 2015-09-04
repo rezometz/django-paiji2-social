@@ -10,29 +10,35 @@
 </div>
 <div class="row">
     <div class="col-md-2 col-sx-1 dark-text">
-        {% block master %}
+			{% block nav %}
 					<div class="sidebar-nav navbar-collapse">
-						<ul class="nav" id="side-menu">
+						<ul class="nav">
 							<li>
-								<a class="btn btn-default active" href="{% url 'directory' %}">
-									<i class="fa fa-search"></i>
+								<a class="btn btn-default {% block usersbtnclass %}{% endblock %}" href="{% url 'directory' %}">
+									<i class="fa fa-user"></i>
 									{% trans 'Users' %}</a>
 									<br/>
 							</li>
 							<li>
-								<a class="btn btn-default active" href="{% url 'groups' %}">
-									<i class="fa fa-search"></i>
+								<a class="btn btn-default {% block groupsbtnclass %}{% endblock %}" href="{% url 'groups' %}">
+									<i class="fa fa-users"></i>
 									{% trans 'Groups' %}
 								</a>
 								<br/>
 							</li>
 						</ul>
 					</div>
-				{% endblock %}
+			{% endblock %}
 		</div>
 		<div class="col-md-10">
-					{% block content %} {% endblock %}
+					{% block form %}{% endblock %}
 		</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		{% block results %}{% endblock %}
+	</div>
 </div>
 			
 {% endblock %}
