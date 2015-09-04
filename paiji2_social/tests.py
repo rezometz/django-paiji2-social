@@ -1,12 +1,17 @@
 # -*- encoding: utf-8 -*-
+import os
 from django.test import TestCase
 from htmlvalidator.client import ValidatingClient
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.utils import timezone
+from django.conf import settings
+from django.core.files import File
 
 from backbone_calendar.models import Calendar
-# from django.db.models import URLField  #, ImageField
+from django.db.models import ImageField
+from django.db.models.fields.files import FieldFile
+from django.core.files import File
 from . import models
 
 
@@ -41,7 +46,11 @@ class BaseTestCase(TestCase):
             name='normal groups',
         )
 
-        # self.logo = ImageField('mylogo')
+        self.logo = File(open(os.path.join(
+                        settings.BASE_DIR,
+                        'logo.gif',
+                    )
+        ))
 
         self.calendar = Calendar.objects.create(
             name='mybestcalendar',
@@ -54,7 +63,7 @@ class BaseTestCase(TestCase):
             category=self.normal_groups,
             createdOn=timezone.now(),
             deletedOn=None,
-            logo=None,
+            logo=self.logo,
             newsfeed='mynewsurl',
             calendar=self.calendar,
         )
@@ -115,7 +124,7 @@ class BaseTestCase(TestCase):
             author=self.gontran,
             message=self.first_message,
             pubDate=timezone.now(),
-            content='Well ! http://perdu.com good job !</a>',
+            content='Well ! <a href="http://perdu.com">[lien]</a> good job !',
         )
 
         self.second_comment = models.Comment.objects.create(
@@ -141,13 +150,16 @@ class PagesTestCase(BaseTestCase):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
 
-        response = self.client.get(reverse('newsfeed-add'))
-        self.assertEqual(response.status_code, 302)
-
         response = self.client.get(reverse('directory'))
         self.assertEqual(response.status_code, 302)
 
         response = self.client.get(reverse('directory') + '?q=gont')
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(reverse('groups'))
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(reverse('newsfeed-add'))
         self.assertEqual(response.status_code, 302)
 
         response = self.client.get(reverse(
@@ -193,13 +205,16 @@ class PagesTestCase(BaseTestCase):
         response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
 
-        response = self.client.get(reverse('newsfeed-add'))
-        self.assertEqual(response.status_code, 200)
-
         response = self.client.get(reverse('directory'))
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get(reverse('directory') + '?q=gont')
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.get(reverse('groups'))
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.get(reverse('newsfeed-add'))
         self.assertEqual(response.status_code, 200)
 
         response = self.client.get(reverse(
