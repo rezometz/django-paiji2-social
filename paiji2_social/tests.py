@@ -9,9 +9,6 @@ from django.conf import settings
 from django.core.files import File
 
 from backbone_calendar.models import Calendar
-from django.db.models import ImageField
-from django.db.models.fields.files import FieldFile
-from django.core.files import File
 from . import models
 
 
