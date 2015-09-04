@@ -209,24 +209,23 @@ class UserDirectoryView(generic.ListView):
     def get_queryset(self):
         self._update_user_rooms()
         if 'q' in self.request.GET:
-            word = self.request.GET['q']
-            if word != '' and word is not None:
-                if REZO:
-                    qs = self.model.objects.filter(
-                        Q(first_name__icontains=word) |
-                        Q(last_name__icontains=word) |
-                        Q(username__icontains=word) |
-                        Q(email__icontains=word) |
-                        Q(room__icontains=word)
-                    )
-                else:
-                    qs = self.model.objects.filter(
+            query = self.request.GET['q']
+            words = query.split(' ')
+            Qobj = Q()
+            filtered = False
+            for word in words:
+                if word != '':
+                    filtered = True
+                    Qobj |= (
                         Q(first_name__icontains=word) |
                         Q(last_name__icontains=word) |
                         Q(username__icontains=word) |
                         Q(email__icontains=word)
                     )
-                return qs
+                    if REZO:
+                        Qobj |= Q(room__icontains=word)
+            if filtered:
+                return self.model.objects.filter(Qobj)
         return super(UserDirectoryView, self).get_queryset()
 
     def get_context_data(self, **kwargs):
