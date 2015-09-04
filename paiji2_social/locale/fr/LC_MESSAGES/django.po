@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-03 23:47+0200\n"
+"POT-Creation-Date: 2015-09-04 13:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgstr "date de création"
 msgid "deletion date"
 msgstr "date de suppression"
 
-#: models.py:79
+#: models.py:79 templates/social/groups.html:64
 msgid "logo"
 msgstr "logo"
 
@@ -187,49 +187,66 @@ msgstr "À propos de"
 msgid "%(TimeSince)s ago"
 msgstr "il y a %(TimeSince)s"
 
-#: templates/social/directory.html:12
+#: templates/social/directory.html:10 templates/social/directory.html.py:21
 msgid "Directory"
 msgstr "Répertoire"
 
-#: templates/social/directory.html:23
+#: templates/social/directory.html:32
 msgid "search"
 msgstr "rechercher"
 
-#: templates/social/directory.html:45
+#: templates/social/directory.html:54
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/social/directory.html:46
+#: templates/social/directory.html:55
 msgid "Last name"
 msgstr "Nom de famille"
 
-#: templates/social/directory.html:47
+#: templates/social/directory.html:56
 msgid "First name"
 msgstr "Prénom"
 
-#: templates/social/directory.html:48
+#: templates/social/directory.html:57
 msgid "Pseudo"
 msgstr "Pseudo"
 
-#: templates/social/directory.html:49
+#: templates/social/directory.html:58
 msgid "Email"
 msgstr "Courriel"
 
-#: templates/social/directory.html:50
+#: templates/social/directory.html:59
 msgid "School"
 msgstr "École"
 
-#: templates/social/directory.html:59
+#: templates/social/directory.html:60
+msgid "Class"
+msgstr "Classe"
+
+#: templates/social/directory.html:61
+msgid "Room"
+msgstr "Chambre"
+
+#: templates/social/directory.html:69 templates/social/directory.html.py:77
 msgid "view profile"
 msgstr "consulter le profil"
 
-#: templates/social/directory.html:71
+#: templates/social/directory.html:84
 msgid "Send a mail to"
 msgstr "Envoyer un courriel à"
 
-#: templates/social/directory.html:88
+#: templates/social/directory.html:101 templates/social/groups.html:81
 msgid "no result"
 msgstr "aucun résultat"
+
+#: templates/social/directory_base.html:20
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: templates/social/directory_base.html:26 templates/social/groups.html:9
+#: templates/social/groups.html.py:16
+msgid "Groups"
+msgstr "Groupes"
 
 #: templates/social/group_base.html:13
 msgid "Calendar"
@@ -260,6 +277,26 @@ msgstr "Tableau de bord"
 msgid "Download iCalendar file (.ics)"
 msgstr "Télécharger le fichier iCalendar (.ics)"
 
+#: templates/social/groups.html:51 templates/social/message_form.html:36
+msgid "Group"
+msgstr "Groupe"
+
+#: templates/social/groups.html:52
+msgid "Name"
+msgstr "Nom"
+
+#: templates/social/groups.html:53
+msgid "Category"
+msgstr "Catégorie"
+
+#: templates/social/groups.html:54
+msgid "Creation date"
+msgstr "Date de création"
+
+#: templates/social/groups.html:62 templates/social/groups.html.py:69
+msgid "view group detail"
+msgstr "consulter en détail ce groupe"
+
 #: templates/social/index.html:4
 msgid "Home"
 msgstr "Accueil"
@@ -287,10 +324,6 @@ msgstr "Rédiger un article"
 #: templates/social/message_form.html:31
 msgid "Author"
 msgstr "Rédacteur"
-
-#: templates/social/message_form.html:36
-msgid "Group"
-msgstr "Groupe"
 
 #: templates/social/message_form.html:39
 msgid "Title"
@@ -357,12 +390,6 @@ msgstr "Votre message a été supprimé, ce sera pris en compte bientôt"
 #: views.py:126
 msgid "Your comment has been successfully saved."
 msgstr "Votre commentaire a bien été enregistré"
-
-#~ msgid "Class"
-#~ msgstr "Classe"
-
-#~ msgid "Room"
-#~ msgstr "Chambre"
 
 #~ msgid "profile"
 #~ msgstr "profil"

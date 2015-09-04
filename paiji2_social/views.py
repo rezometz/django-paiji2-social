@@ -174,7 +174,7 @@ class GroupMembersView(GroupMixin, generic.ListView):
         return qs
 
 
-class DirectoryView(generic.ListView):
+class UserDirectoryView(generic.ListView):
     model = get_user_model()
     context_object_name = 'users'
     ordering = ['last_name', 'first_name', 'username']
@@ -184,19 +184,25 @@ class DirectoryView(generic.ListView):
     def get_queryset(self):
         if 'q' in self.request.GET:
             word = self.request.GET['q']
-            print word
-            qs = self.model.objects.filter(
-                Q(first_name__icontains=word) |
-                Q(last_name__icontains=word) |
-                Q(username__icontains=word) |
-                Q(email__icontains=word)
-            )
-            return qs
-        else:
-            return super(DirectoryView, self).get_queryset()
+            if word != '' and word is not None:
+                qs = self.model.objects.filter(
+                    Q(first_name__icontains=word) |
+                    Q(last_name__icontains=word) |
+                    Q(username__icontains=word) |
+                    Q(email__icontains=word)
+                )
+                return qs
+        return super(UserDirectoryView, self).get_queryset()
 
     def get_context_data(self, **kwargs):
-        context = super(DirectoryView, self).get_context_data(**kwargs)
+        context = super(UserDirectoryView, self).get_context_data(**kwargs)
         q = self.request.GET.get('q', '')
         context.update({'q': q})
         return context
+
+
+class GroupDirectoryView(generic.ListView):
+    model = Group
+    context_object_name = 'groups'
+    ordering = ['name', 'category', 'createdOn']
+    template_name = 'social/groups.html'

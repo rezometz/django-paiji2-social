@@ -10,7 +10,8 @@ from .views import (
     GroupView,
     GroupMembersView,
     GroupNewsView,
-    DirectoryView,
+    UserDirectoryView,
+    GroupDirectoryView,
 )
 from .feeds import LatestEntriesFeed
 
@@ -43,11 +44,18 @@ urlpatterns = [
         name="comment-add"
     ),
 
-    # Directory
+    # User Directory
     url(
         r'^directory/$',
-        login_required(DirectoryView.as_view()),
+        login_required(UserDirectoryView.as_view()),
         name='directory',
+    ),
+
+    # Group Directory
+    url(
+        r'^groups/$',
+        login_required(GroupDirectoryView.as_view()),
+        name='groups',
     ),
 
     # Group
@@ -56,6 +64,7 @@ urlpatterns = [
         login_required(GroupView.as_view()),
         name="workgroup-view",
     ),
+
     # Group Members
     url(
         r'^(?P<slug>[\w-]+)/members$',
