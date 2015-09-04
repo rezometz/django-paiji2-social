@@ -191,7 +191,7 @@ class UserDirectoryView(generic.ListView):
     try:
         min_update_delta = settings.MIN_ROOM_UPDATE_DELTA
     except:
-        print('no MIN_ROOM_UPDATE_DELTA setting found…')
+        print('no MIN_ROOM_UPDATE_DELTA setting found...')
         min_update_delta = timedelta(days=7)
 
     def _update_user_rooms(self):
