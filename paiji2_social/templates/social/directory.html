@@ -41,7 +41,7 @@
 {% if is_paginated %}
 <div class="row">
     <div class="col col-md-12 centered pagination-container">
-        {% bootstrap_pagination page_obj %}
+        {% bootstrap_pagination page_obj url=request.get_full_path %}
 	</div>
 </div>
 {% endif %}
@@ -116,7 +116,7 @@
 {% if is_paginated %}
 <div class="row">
     <div class="col col-md-12 centered pagination-container">
-        {% bootstrap_pagination page_obj %}
+        {% bootstrap_pagination page_obj url=request.get_full_path %}
 	</div>
 </div>
 {% endif %}
