@@ -2,6 +2,7 @@
 import django.conf.global_settings as DEFAULT_SETTINGS
 import os
 
+CI_TEST = True
 
 DEBUG = True
 

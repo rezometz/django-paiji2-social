@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-from datetime import timedelta
 from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.http import HttpResponseNotFound
@@ -13,11 +12,6 @@ from django.db.models import Q
 from .models import Message, Comment, Group
 from .forms import CommentForm, MessageForm
 from django.conf import settings
-try:
-    import rezo
-    REZO = True
-except ImportError:
-    REZO = False
 
 
 class MessageListView(generic.ListView):
@@ -187,27 +181,8 @@ class UserDirectoryView(generic.ListView):
     ordering = ['last_name', 'first_name', 'username']
     template_name = 'social/directory.html'
     paginate_by = 20
-    last_room_update = None
-    try:
-        min_update_delta = settings.MIN_ROOM_UPDATE_DELTA
-    except:
-        print('no MIN_ROOM_UPDATE_DELTA setting found...')
-        min_update_delta = timedelta(days=7)
-
-    def _update_user_rooms(self):
-        if (
-            REZO and (
-                UserDirectoryView.last_room_update is None or
-                UserDirectoryView.min_update_delta <
-                timezone.now() - UserDirectoryView.last_room_update
-            )
-        ):
-            if REZO:
-                rezo.models.update_user_rooms()
-                UserDirectoryView.last_room_update = timezone.now()
 
     def get_queryset(self):
-        self._update_user_rooms()
         if 'q' in self.request.GET:
             query = self.request.GET['q']
             words = query.split(' ')
@@ -222,7 +197,12 @@ class UserDirectoryView(generic.ListView):
                         Q(username__icontains=word) |
                         Q(email__icontains=word)
                     )
-                    if REZO:
+                    if (
+                        hasattr(settings, 'CI_TEST') and
+                        settings.CI_TEST
+                    ):
+                        pass
+                    else:
                         Qobj |= Q(room__icontains=word)
             if filtered:
                 return self.model.objects.filter(Qobj)
