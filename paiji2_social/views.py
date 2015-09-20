@@ -191,7 +191,7 @@ class UserDirectoryView(generic.ListView):
             for word in words:
                 if word != '':
                     filtered = True
-                    Qobj |= (
+                    Qobj &= (
                         Q(first_name__icontains=word) |
                         Q(last_name__icontains=word) |
                         Q(username__icontains=word) |
