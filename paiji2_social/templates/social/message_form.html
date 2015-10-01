@@ -59,6 +59,10 @@
             {% endbuttons %}
             <div class="clearfix"></div>
         </form>
+        {# there is way to bypass a bug #}
+        <p>
+            {{ 'Si le bouton "publier" ne fonctionne pas, appuyer sur "F5" (recharger la page) puis "Quitter la page" dans la fenêtre de dialogue, avant de réappuyer sur le bouton "publier".' }}
+        </p>
         {% else %}
 
         {% trans 'You are not registered as a staff of a group (association/club/list), please contact rezo or the bureau of your group to register you as a staff.' %}
