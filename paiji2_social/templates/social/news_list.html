@@ -1,8 +1,13 @@
 {% extends 'social/group_base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %}{% trans 'News' %}{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'social/css/social.css' %}" />
+{% endblock %}
 
 {% block content %}
 {% include "social/news-feed.html" %}
